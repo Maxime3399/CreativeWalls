@@ -1,5 +1,53 @@
 package fr.Maxime3399.CreativeWalls;
 
-public class MainClass {
+import org.bukkit.Bukkit;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.java.JavaPlugin;
+
+import fr.Maxime3399.CreativeWalls.managers.ConfigManager;
+import fr.Maxime3399.CreativeWalls.managers.VersionsManager;
+import fr.Maxime3399.CreativeWalls.utils.MessageUtils;
+
+public class MainClass extends JavaPlugin{
+	
+	private static Plugin plugin;
+	
+	public void onEnable() {
+		
+		plugin = this;
+		
+		if(VersionsManager.setupVersion()) {
+			
+			if(ConfigManager.setupConfiguration()) {
+				
+				//start
+				
+			}else {
+				
+				Bukkit.getConsoleSender().sendMessage(MessageUtils.getPluginPrefix()+" §r"+MessageUtils.getMessage("Configuration_creation_problem"));
+				disable();
+				
+			}
+			
+		}else {
+			
+			Bukkit.getConsoleSender().sendMessage(MessageUtils.getPluginPrefix()+" §r"+MessageUtils.getMessage("Invalid_version").replaceAll("%version%", VersionsManager.getVersion()));
+			disable();
+			
+		}
+		
+	}
+	
+	public static Plugin getInstance() {
+		
+		return plugin;
+		
+	}
+	
+	private static void disable() {
+		
+		Bukkit.getPluginManager().disablePlugin(plugin);
+		
+	}
 
 }
