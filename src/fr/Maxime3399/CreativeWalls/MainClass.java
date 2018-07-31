@@ -1,5 +1,7 @@
 package fr.Maxime3399.CreativeWalls;
 
+import java.util.List;
+
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -24,7 +26,6 @@ public class MainClass extends JavaPlugin{
 			
 			if(ConfigManager.setupConfiguration()) {
 				
-				//start
 				MessageUtils.setupMessages();
 				
 			}else {
@@ -49,9 +50,22 @@ public class MainClass extends JavaPlugin{
 		
 	}
 	
-	private static void disable() {
+	public static void reload() {
+		
+		disable();
+		enable();
+		
+	}
+	
+	public static void disable() {
 		
 		Bukkit.getPluginManager().disablePlugin(plugin);
+		
+	}
+	
+	public static void enable() {
+		
+		Bukkit.getPluginManager().enablePlugin(plugin);
 		
 	}
 	
@@ -60,6 +74,12 @@ public class MainClass extends JavaPlugin{
 		CommandsManager.execute(sender, cmd, label, args);
 		
 		return true;
+		
+	}
+	
+	public List<String> onTabComplete(CommandSender sender, Command cmd, String label, String[] args){
+		
+		return CommandsManager.tabComplete(sender, cmd, label, args);
 		
 	}
 
