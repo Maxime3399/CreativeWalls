@@ -2,3 +2,6 @@ main: fr.Maxime3399.CreativeWalls.MainClass
 author: Maxime3399
 version: 1.0.0-a1.0
 name: CreativeWalls
+commands:
+    creativewalls:
+    cw:

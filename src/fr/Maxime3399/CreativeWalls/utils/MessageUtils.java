@@ -10,6 +10,14 @@ public class MessageUtils {
 		
 		messagesEN.put("Invalid_version", "§cThe plugin is not available in version %version%");
 		messagesEN.put("Configuration_creation_problem", "§&cThe configuration files could not be created");
+		messagesEN.put("Command_invalid_help", "§cInvalid command ! Use : §l/cw help");
+		messagesEN.put("No_permission", "§cYou don't have the permission !");
+		
+	}
+	
+	public static void setupMessages() {
+		
+		messagesEN.put("Item_wall_block", "§eWall Block");
 		
 	}
 	
