@@ -19,6 +19,8 @@ public class MessageUtils {
 		messagesEN.put("Command_invalid_help", "§cInvalid command ! Use : §l/cw help");
 		messagesEN.put("No_permission", "§cYou don't have the permission !");
 		messagesEN.put("Plugin_reloaded", "§aPlugin reloaded.");
+		messagesEN.put("Message_create_wall", "§eCreate your wall by putting wall blocks !");
+		messagesEN.put("Command_no_console", "§cThis command can not be used by the console !");
 		
 	}
 	

@@ -8,6 +8,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
+import fr.Maxime3399.CreativeWalls.commands.CreateCMD;
 import fr.Maxime3399.CreativeWalls.commands.ReloadCMD;
 import fr.Maxime3399.CreativeWalls.utils.MessageUtils;
 
@@ -40,9 +41,9 @@ public class CommandsManager {
 					String argument = args[0];
 					
 					if(argument.equalsIgnoreCase("reload")) {
-						
 						ReloadCMD.commandPlayer(sender, cmd, label, args);
-						
+					}else if(argument.equalsIgnoreCase("create")) {
+						CreateCMD.commandPlayer(sender, cmd, label, args);
 					}
 					
 				}
@@ -60,9 +61,9 @@ public class CommandsManager {
 					String argument = args[0];
 					
 					if(argument.equalsIgnoreCase("reload")) {
-						
 						ReloadCMD.commandConsole(sender, cmd, label, args);
-						
+					}else if(argument.equalsIgnoreCase("create")) {
+						sender.sendMessage(MessageUtils.getPluginPrefix()+"§r "+MessageUtils.getMessage("Command_no_console"));
 					}
 					
 				}
@@ -82,6 +83,7 @@ public class CommandsManager {
 			if(args.length == 1) {
 				
 				compl.add("reload");
+				compl.add("create");
 				
 			}
 			

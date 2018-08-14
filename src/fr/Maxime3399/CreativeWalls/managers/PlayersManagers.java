@@ -11,6 +11,12 @@ public class PlayersManagers {
 	
 	private static ArrayList<CustomPlayer> players = new ArrayList<>();
 	
+	public static ArrayList<CustomPlayer> getPlayers(){
+		
+		return players;
+		
+	}
+	
 	public static CustomPlayer addPlayer(Player player) {
 		
 		CustomPlayer cp = null;
@@ -18,7 +24,7 @@ public class PlayersManagers {
 		if(!playerIsRegistered(player)) {
 			
 			cp = new CustomPlayer(player);
-			cp.setInventory(player.getInventory().getContents());
+			players.add(cp);
 			InventoryUtils.setCreativeInventory(player);
 			
 		}
@@ -31,8 +37,9 @@ public class PlayersManagers {
 		
 		if(playerIsRegistered(player)) {
 			
-			InventoryUtils.resetInventory(player);
-			players.remove(getCustomPlayer(player));
+			CustomPlayer cp = getCustomPlayer(player);
+			cp.restoreInventory(player);
+			players.remove(cp);
 			
 		}
 		

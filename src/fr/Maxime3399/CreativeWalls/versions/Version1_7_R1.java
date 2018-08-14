@@ -44,6 +44,8 @@ public class Version1_7_R1 implements Versions{
 			s = Sound.VILLAGER_NO;
 		}else if(sound.equalsIgnoreCase("PISTON_EXTEND")) {
 			s = Sound.PISTON_EXTEND;
+		}else if(sound.equalsIgnoreCase("LEVEL_UP")) {
+			s = Sound.LEVEL_UP;
 		}
 		
 		return s;

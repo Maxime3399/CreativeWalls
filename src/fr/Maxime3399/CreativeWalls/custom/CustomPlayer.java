@@ -3,7 +3,7 @@ package fr.Maxime3399.CreativeWalls.custom;
 import java.util.ArrayList;
 import java.util.UUID;
 
-import org.bukkit.block.Block;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -12,13 +12,13 @@ public class CustomPlayer {
 	private UUID uuid;
 	private ItemStack[] inventory;
 	
-	private ArrayList<Block> selectedBlocks;
+	private ArrayList<Location> selectedBlocks = new ArrayList<>();
 	
 	
 	public CustomPlayer(Player player) {
 		
 		setUuid(player.getUniqueId());
-		setInventory(player.getInventory().getContents());
+		saveInventory(player);
 		
 	}
 
@@ -41,33 +41,28 @@ public class CustomPlayer {
 	public void setInventory(ItemStack[] inventory) {
 		this.inventory = inventory;
 	}
+	
+	public void saveInventory(Player player) {
+		
+		inventory = player.getInventory().getContents().clone();
+		
+	}
+	
+	public void restoreInventory(Player player) {
+		
+		player.getInventory().clear();
+		player.getInventory().setContents(inventory);
+		
+	}
 
 
-	public ArrayList<Block> getSelectedBlocks() {
+	public ArrayList<Location> getSelectedBlocks() {
 		return selectedBlocks;
 	}
 
 
-	public void setSelectedBlocks(ArrayList<Block> selectedBlocks) {
+	public void setSelectedBlocks(ArrayList<Location> selectedBlocks) {
 		this.selectedBlocks = selectedBlocks;
-	}
-	
-	public boolean addSelectedBlock(Block block) {
-		if(!selectedBlocks.contains(block)) {
-			selectedBlocks.add(block);
-			return true;
-		}else {
-			return false;
-		}
-	}
-	
-	public boolean removeSelectedBlock(Block block) {
-		if(selectedBlocks.contains(block)) {
-			selectedBlocks.remove(block);
-			return true;
-		}else {
-			return false;
-		}
 	}
 
 }
